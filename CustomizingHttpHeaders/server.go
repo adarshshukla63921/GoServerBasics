@@ -11,7 +11,13 @@ func postMethodHandler(w http.ResponseWriter, r *http.Request){
 		http.Error(w,"Only Post is allowed", http.StatusMethodNotAllowed)
 		return
 	}
-	w.Write([]byte("Post Method Responder"))
+	w.Header().Set("content-type","application/json")
+	w.Write([]byte(`{
+		"name" : "adarsh",
+		"branch" : "CSAI",
+		"course" : "Btech",
+		"interest" : "Android Development"
+	}`))
 }
 
 func main(){
